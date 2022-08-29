@@ -1,2 +1,4 @@
 # movies-explorer-api
-Бэкенд проекта
+Бэкенд проекта MOVIES.
+
+https://api.kepova.nomoredomains.sbs домен сервера.
