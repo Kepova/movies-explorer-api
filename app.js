@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { celebrate, Joi, errors } = require('celebrate');
+const helmet = require('helmet');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFoundError = require('./errors/not-found-err');
 const CentralizedError = require('./errors/centralized-error');
@@ -15,6 +16,8 @@ const limiter = require('./middlewares/rateLimiter');
 
 const { PORT = 3000, MONGO_DB = 'mongodb://localhost:27017/moviesdb_dev' } = process.env;
 const app = express();
+
+app.use(helmet());
 
 mongoose.connect(MONGO_DB, {
   useNewUrlParser: true,
