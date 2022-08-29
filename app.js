@@ -12,10 +12,10 @@ const auth = require('./middlewares/auth');
 const { createUser, login, outLogin } = require('./controllers/users');
 const { regexUrl } = require('./constants/constantRegExp');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3000, MONGO_DB = 'mongodb://localhost:27017/moviesdb_dev' } = process.env;
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/moviesdb', {
+mongoose.connect(MONGO_DB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
