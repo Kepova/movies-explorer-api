@@ -11,6 +11,7 @@ const router = require('./routes/index');
 const auth = require('./middlewares/auth');
 const { createUser, login, outLogin } = require('./controllers/users');
 const { regexUrl } = require('./constants/constantRegExp');
+const limiter = require('./middlewares/rateLimiter');
 
 const { PORT = 3000, MONGO_DB = 'mongodb://localhost:27017/moviesdb_dev' } = process.env;
 const app = express();
@@ -23,6 +24,8 @@ mongoose.connect(MONGO_DB, {
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(requestLogger);
+
+app.use(limiter);
 
 app.post(
   '/signin',
