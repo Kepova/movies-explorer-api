@@ -8,7 +8,6 @@ const CREATED = 201;
 // возвращает все сохранённые текущим пользователем фильмы
 const getMovies = (req, res, next) => {
   Movie.find({})
-    .populate('owner')
     .then((movies) => res.send(movies))
     .catch(next);
 };
