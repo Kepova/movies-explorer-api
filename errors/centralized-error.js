@@ -4,11 +4,11 @@ module.exports = (err, req, res, next) => {
 
   res
     .status(statusCode)
-    .send({
+    .send(JSON.stringify({
       message: statusCode === 500
         ? 'На сервере произошла ошибка'
         : message,
-    });
+    }));
 
   next();
 };
