@@ -13,7 +13,7 @@ const auth = require('./middlewares/auth');
 const autorizationRouter = require('./routes/autorization');
 const limiter = require('./middlewares/rateLimiter');
 
-const { PORT = 3000, MONGO_DB = 'mongodb://localhost:27017/moviesdb' } = process.env;
+const { PORT = 3001, MONGO_DB = 'mongodb://localhost:27017/moviesdb' } = process.env;
 const app = express();
 
 const allowedCors = [

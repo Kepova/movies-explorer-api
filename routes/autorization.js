@@ -13,6 +13,7 @@ autorizationRouter.post(
   }),
   login,
 );
+
 autorizationRouter.post(
   '/signup',
   celebrate({
@@ -31,6 +32,7 @@ autorizationRouter.post(
   }),
   createUser,
 );
+
 autorizationRouter.get(
   '/signout',
   outLogin,
