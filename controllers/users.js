@@ -98,8 +98,8 @@ const login = (req, res, next) => {
       res.cookie('jwt', token, {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
-        sameSite: 'none',
-        // secure: true,
+        sameSite: 'None',
+        secure: true,
       }).json({ email: user.email });
     })
     .catch(next);
@@ -107,7 +107,12 @@ const login = (req, res, next) => {
 
 // выход из профиля
 const outLogin = (req, res, next) => {
-  res.clearCookie('jwt').send({ message: 'Выход из профиля' });
+  res.clearCookie('jwt', {
+    maxAge: 0,
+    httpOnly: true,
+    sameSite: 'None',
+    secure: true,
+  }).send({ message: 'Выход из профиля' });
   next();
 };
 
